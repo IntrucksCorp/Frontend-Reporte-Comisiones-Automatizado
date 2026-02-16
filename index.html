@@ -12,20 +12,31 @@
     />
   </head>
   <body>
-    <div class="container">
-      <h1>📊 Generador de Reporte de Comisiones</h1>
+    <div class="container" id="appContainer">
+      <h1>📊 Generador de Reporte</h1>
 
       <div class="form">
-        <label>Fecha inicial</label>
-        <input type="date" id="startDate" />
+        <div class="input-group">
+          <label for="startDate">Fecha inicial</label>
+          <input type="date" id="startDate" />
+        </div>
 
-        <label>Fecha final (opcional)</label>
-        <input type="date" id="endDate" />
+        <div class="input-group">
+          <label for="endDate">Fecha final (opcional)</label>
+          <input type="date" id="endDate" />
+        </div>
 
-        <button id="generateBtn">Generar Reporte</button>
+        <button id="generateBtn">Descargar Reporte</button>
       </div>
 
       <p id="status"></p>
+    </div>
+
+    <!-- Loader Overlay -->
+    <div id="loaderOverlay" class="loader-overlay">
+      <div class="spinner"></div>
+      <div class="loader-message">Generando Reporte...</div>
+      <div class="loader-subtext">Puede tardar entre 5 a 10 minutos</div>
     </div>
 
     <script src="main.js"></script>

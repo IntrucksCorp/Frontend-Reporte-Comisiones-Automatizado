@@ -4,16 +4,18 @@ document.getElementById("generateBtn").addEventListener("click", async () => {
   const startDate = document.getElementById("startDate").value;
   const endDate = document.getElementById("endDate").value;
   const status = document.getElementById("status");
+  const loaderOverlay = document.getElementById("loaderOverlay");
 
   if (!startDate) {
     status.innerText = "⚠️ Debes seleccionar una fecha inicial";
+    status.style.color = "#e11d48";
     return;
   }
 
-  status.innerText = "⏳ Generando reporte...";
+  status.innerText = "";
+  loaderOverlay.classList.add("active");
 
   try {
-    // ✅ Usar nombres correctos de parámetros
     let url = `${API_URL}?date_from=${startDate}`;
     if (endDate) url += `&date_to=${endDate}`;
 
@@ -37,8 +39,12 @@ document.getElementById("generateBtn").addEventListener("click", async () => {
     window.URL.revokeObjectURL(downloadUrl);
 
     status.innerText = "✅ Reporte descargado correctamente";
+    status.style.color = "#059669";
   } catch (error) {
     console.error(error);
     status.innerText = "❌ Error generando el reporte";
+    status.style.color = "#e11d48";
+  } finally {
+    loaderOverlay.classList.remove("active");
   }
 });
