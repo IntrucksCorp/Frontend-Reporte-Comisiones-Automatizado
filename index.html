@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Generador de Reporte de Comisiones</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>📊 Generador de Reporte de Comisiones</h1>
+
+      <div class="form">
+        <label>Fecha inicial</label>
+        <input type="date" id="startDate" />
+
+        <label>Fecha final (opcional)</label>
+        <input type="date" id="endDate" />
+
+        <button id="generateBtn">Generar Reporte</button>
+      </div>
+
+      <p id="status"></p>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
