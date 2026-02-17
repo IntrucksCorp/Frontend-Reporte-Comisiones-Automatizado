@@ -1,6 +1,8 @@
 :root {
   --primary: #0f172a;
   --primary-light: #1e293b;
+  --primary-green: #399B80;
+  --primary-blue: #00347C;
   --accent: #3b82f6;
   --accent-hover: #2563eb;
   --bg: #f8fafc;
@@ -10,6 +12,16 @@
   --border: #e2e8f0;
   --shadow:
     0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  /* === Sidebar visual identity === */
+  --sidebar-background: linear-gradient(180deg, #399B80 0%, #00347C 100%);
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 165 46% 42%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 215 100% 24%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 0 0% 100% / 15%;
+  --sidebar-ring: 165 46% 42%;
 }
 
 * {
@@ -20,11 +32,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(at 0% 0%, hsla(217, 91%, 60%, 0.05) 0, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(217, 91%, 60%, 0.05) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(217, 91%, 60%, 0.05) 0, transparent 50%);
+  background-image: var(--sidebar-background);
   color: var(--text-main);
   display: flex;
   justify-content: center;
@@ -34,13 +42,23 @@ body {
 
 .container {
   background: var(--card-bg);
-  padding: 40px;
+  padding: 10px 40px;
   border-radius: 24px;
   width: 100%;
   max-width: 420px;
   box-shadow: var(--shadow);
   border: 1px solid rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+  margin-inline: auto;
+  position: relative;
+  left: -8px;
 }
 
 h1 {
@@ -48,7 +66,7 @@ h1 {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 32px;
-  color: var(--primary);
+  color: var(--primary-blue);
   letter-spacing: -0.025em;
 }
 
@@ -94,7 +112,7 @@ input:focus {
 button {
   margin-top: 12px;
   padding: 14px;
-  background: var(--primary);
+  background: var(--primary-green);
   color: white;
   border: none;
   border-radius: 14px;
@@ -108,7 +126,7 @@ button {
 }
 
 button:hover {
-  background: var(--primary-light);
+  background: var(--primary-blue);
   transform: translateY(-1px);
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
