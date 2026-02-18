@@ -1,4 +1,5 @@
-const API_URL = "http://127.0.0.1:8000/generate-report";
+const API_URL = "https://commissionsreportapi.intruckscorp.com/generate-report";
+const API_URL_TEST = "http://127.0.0.1:8000/generate-report";
 
 document.getElementById("generateBtn").addEventListener("click", async () => {
   const startDate = document.getElementById("startDate").value;
