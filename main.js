@@ -98,7 +98,7 @@ document.getElementById("generateBtn").addEventListener("click", async () => {
   loaderOverlay.classList.add("active");
 
   try {
-    let url = `${API_URL_TEST}?date_from=${startDate}`;
+    let url = `${API_URL}?date_from=${startDate}`;
     if (endDate) url += `&date_to=${endDate}`;
     if (selectedAgentValue)
       url += `&agent=${encodeURIComponent(selectedAgentValue)}`;
