@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Generador de Reporte de Comisiones</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>"
+    />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +17,7 @@
   </head>
   <body>
     <div class="container" id="appContainer">
-      <img class="logo" src="./img/intrucks-logo.png" alt="Logo IN TRUCKS">
+      <img class="logo" src="./img/intrucks-logo.png" alt="Logo IN TRUCKS" />
 
       <h1>📊 Generador de Reporte</h1>
 
@@ -28,6 +32,120 @@
           <input type="date" id="endDate" />
         </div>
 
+        <div class="input-group">
+          <label>Vendedor / Agente</label>
+          <div class="agent-controls">
+            <div class="custom-dropdown" id="customAgentDropdown">
+              <div class="dropdown-header" id="dropdownHeader">
+                <span>Todos los Agentes</span>
+                <i class="arrow-icon">▼</i>
+              </div>
+              <div class="dropdown-content" id="dropdownContent">
+                <input
+                  type="text"
+                  id="agentSearch"
+                  placeholder="🔍 Buscar agente..."
+                  autocomplete="off"
+                />
+                <ul id="agentList">
+                  <li class="option" data-value="">Todos los Agentes</li>
+                  <li class="category">EQUIPO RED</li>
+                  <li class="option" data-value="LAURA ROJAS">LAURA ROJAS</li>
+                  <li class="option" data-value="KELLY VANESSA VAHOS">
+                    KELLY VANESSA VAHOS
+                  </li>
+                  <li class="option" data-value="JONATHAN STICK CORTES">
+                    JONATHAN STICK CORTES
+                  </li>
+                  <li class="option" data-value="LEILYS MARIA MARCHAN">
+                    LEILYS MARIA MARCHAN
+                  </li>
+                  <li class="option" data-value="SARA TOBON">SARA TOBON</li>
+                  <li class="option" data-value="NESTOR AMAYA">NESTOR AMAYA</li>
+                  <li class="option" data-value="LEIDY JOHANA PEREZ">
+                    LEIDY JOHANA PEREZ
+                  </li>
+                  <li class="option" data-value="GEORGINA BELEN">
+                    GEORGINA BELEN
+                  </li>
+                  <li class="option" data-value="YENIFER GALVAN">
+                    YENIFER GALVAN
+                  </li>
+
+                  <li class="category">EQUIPO BLUE</li>
+                  <li class="option" data-value="JEFFERSON URIBE">
+                    JEFFERSON URIBE
+                  </li>
+                  <li class="option" data-value="DANIELA BERRIO">
+                    DANIELA BERRIO
+                  </li>
+                  <li class="option" data-value="LEIDY YOVANNA SIERRA">
+                    LEIDY YOVANNA SIERRA
+                  </li>
+                  <li class="option" data-value="SARA RAMIREZ">SARA RAMIREZ</li>
+                  <li class="option" data-value="LAURA RIOS">LAURA RIOS</li>
+                  <li class="option" data-value="JUAN ESTEBAN SANCHEZ">
+                    JUAN ESTEBAN SANCHEZ
+                  </li>
+                  <li class="option" data-value="SILVIA CIFUENTES">
+                    SILVIA CIFUENTES
+                  </li>
+                  <li class="option" data-value="WENDY PAOLA GUZMAN">
+                    WENDY PAOLA GUZMAN
+                  </li>
+
+                  <li class="category">RENEWAL / RETENTION</li>
+                  <li class="option" data-value="JUANITA ANGEL">
+                    JUANITA ANGEL
+                  </li>
+                  <li class="option" data-value="JUAN PABLO GIRALDO">
+                    JUAN PABLO GIRALDO
+                  </li>
+                  <li class="option" data-value="VALENTINA CARDONA">
+                    VALENTINA CARDONA
+                  </li>
+                  <li class="option" data-value="ALEJANDRA CANO">
+                    ALEJANDRA CANO
+                  </li>
+                  <li class="option" data-value="DANIEL MARIN">DANIEL MARIN</li>
+
+                  <li class="category">FREELANCE</li>
+                  <li class="option" data-value="DAVID CACERES">
+                    DAVID CACERES
+                  </li>
+                  <li class="option" data-value="CRISTIAN MOSQUERA">
+                    CRISTIAN MOSQUERA
+                  </li>
+                  <li class="option" data-value="VANESA CASTRO">
+                    VANESA CASTRO
+                  </li>
+                  <li class="option" data-value="ESTEFANI MONTES">
+                    ESTEFANI MONTES
+                  </li>
+                  <li class="option" data-value="NANCY GAVIRIA">
+                    NANCY GAVIRIA
+                  </li>
+
+                  <li class="category">AGENT</li>
+                  <li class="option" data-value="VERONICA ESPINAL">
+                    VERONICA ESPINAL
+                  </li>
+                  <li class="option" data-value="JOSE GIRALDO">JOSE GIRALDO</li>
+                  <li class="option" data-value="LAURA GALVIS">LAURA GALVIS</li>
+                </ul>
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button id="addAgentBtn" type="button" title="Agregar Agente">
+                +
+              </button>
+              <button id="removeAgentBtn" type="button" title="Eliminar Agente">
+                −
+              </button>
+            </div>
+          </div>
+        </div>
+
         <button id="generateBtn">Descargar Reporte</button>
       </div>
 
@@ -39,6 +157,63 @@
       <div class="spinner"></div>
       <div class="loader-message">Generando Reporte...</div>
       <div class="loader-subtext">Puede tardar entre 5 a 10 minutos</div>
+    </div>
+
+    <!-- Add Agent Modal -->
+    <div id="agentModal" class="modal">
+      <div class="modal-content">
+        <h2>Añadir Nuevo Agente</h2>
+        <div class="modal-body">
+          <div class="input-group">
+            <label for="newAgentName">Nombre del Agente</label>
+            <input
+              type="text"
+              id="newAgentName"
+              placeholder="Escriba el nombre completo..."
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="input-group">
+            <label>Seleccionar Equipo / Área</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="agentTeam"
+                  value="EQUIPO RED"
+                  checked
+                />
+                <span class="radio-label">Equipo Red</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="agentTeam" value="EQUIPO BLUE" />
+                <span class="radio-label">Equipo Blue</span>
+              </label>
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="agentTeam"
+                  value="RENEWAL / RETENTION"
+                />
+                <span class="radio-label">Renewal / Retention</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="agentTeam" value="FREELANCE" />
+                <span class="radio-label">Freelance</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="agentTeam" value="AGENT" />
+                <span class="radio-label">No aplica</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="cancelAddBtn" class="btn-secondary">Cancelar</button>
+          <button id="saveAgentBtn">Guardar Agente</button>
+        </div>
+      </div>
     </div>
 
     <script src="main.js"></script>
